@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Hello World!</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous" />
+	
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+</head>
+<body>
+
+<div class="container">
+
+    <form method="POST" th:object="${userForm}" class="form-signin">
+        <h2 class="form-signin-heading">Create your account</h2>
+        
+        <div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupUserName">Username</label>
+			<input th:field="*{username}" id="signupUserName" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupFirstName">Firstname</label>
+			<input th:field="*{firstname}" id="signupFirstName" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		
+		
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupLastName">Lastname</label>
+			<input th:field="*{lastname}" id="signupLastName" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		
+		
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupPersonnr">Personnr</label>
+			<input th:field="*{personnr}" id="signupPersonnr" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupAdress">Adress</label>
+			<input th:field="*{adress}" id="signupAdress" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupOrt">Ort</label>
+			<input th:field="*{ort}" id="signupOrt" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupTelefon">Telefon nummer</label>
+			<input th:field="*{telefon}" id="signupTelefon" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupEmail">Email</label>
+			<input th:field="*{email}" id="signupEmail" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupKlubb">Klubb</label>
+			<input th:field="*{klubb}" id="signupKlubb" type="text" maxlength="50" class="form-control" />
+			</div>
+		</div>
+		
+		
+		
+        
+        <div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupPassword">Password</label>
+			 <input th:field="*{password}" name="password" type="password" class="form-control" placeholder="Password"/>
+			</div>
+		</div>
+		
+		<div class="form-group">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+			<label class="control-label" for="signupPasswordConfirm">Password confirm</label>
+			 <input th:field="*{passwordConfirm}" name="password" type="password" class="form-control" placeholder="Password"/>
+			</div>
+		</div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+
+</div>
+<!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+</body>
+</html>
