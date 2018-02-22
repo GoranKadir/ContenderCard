@@ -76,6 +76,15 @@ public class ViewController {
         return "admin";
     }
     
+    @RequestMapping(value = "/profile")
+    public String profile(Model model){
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		Fighter user = fighterService.findByUsername(username);
+    	model.addAttribute("info", user);
+    	return "profile";
+    }
+    
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();

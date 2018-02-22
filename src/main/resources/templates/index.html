@@ -11,26 +11,8 @@
     <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
 </head>
 <body ng-app="app" ng-controller="FighterRestController as vm">
-<header>
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">BUDO KAMPSPORTSFÖRBUDENT</a>
-            </div>
-            <p class="navbar-text navbar-right" style="margin-right: 10px;">
-            	<span sec:authentication="name">Bob</span>
-            </p>
-        </div>
-       <ul>
-<li th:if="${#httpServletRequest.userPrincipal != null}" class="nav-item">
-				<form th:action="@{/logout}" method="post">
-					<input type="submit" value="Sign Out" />
-				</form>
-				</li>
-				
-				</ul>
-    </nav>
-</header>
+
+	<th:block th:include="navbar"></th:block>
 
 <div ng-app="">
  
@@ -40,21 +22,7 @@
 
 </div>
 
-
-
-
-<p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
-
-Logged user: <span sec:authentication="name">Bob</span>
-Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
-
 <p sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/admin}"></a>Admin</p>
-
-
-
-
-
-
 				
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

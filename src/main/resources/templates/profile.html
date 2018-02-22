@@ -12,51 +12,9 @@
 </head>
 
 <body>
-
-<th:block th:include="navbar"></th:block>
-<div class="container">
-<h1>View all posts</h1>
-
-
-		<!-- <div th:each="info : ${info}">
-				<p th:text="*{info.title}"></p>
-				<p th:text="*{info.body}"></p>
-				<p th:text="*{info.date}"></p>
-			</div> -->
-			
-	<ul class="nav nav-pills row">
-    <li class="nav-item col-sm">
-    <a class="nav-link active" data-toggle="pill" href="#home">Upcoming events</a>
-  </li>
-     <li class="nav-item col-sm">
-    <a class="nav-link" data-toggle="pill" href="#menu1">Past events</a>
-  </li>
-    <li class="nav-item col-sm">
-    <a class="nav-link" data-toggle="pill" href="#menu2">Your events</a>
-  </li>
-  </ul>
-			
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active container" id="home">
-  <div th:each="info : ${info}">
- 	<p th:text="*{info.title}"></p>
- 	<p th:text="*{info.body}"></p>
-	<p th:text="*{info.date}"></p>
-	<p>........................</p>
-	</div>
-  </div>
-  <div class="tab-pane container" id="menu1">Two </div>
-  <div class="tab-pane container" id="menu2">tre</div>
-</div>
-
-
-
-</div>
-
-
-
+	
+	Profile
+		
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

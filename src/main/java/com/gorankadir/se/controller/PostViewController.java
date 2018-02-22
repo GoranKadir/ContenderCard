@@ -35,10 +35,10 @@ public class PostViewController {
 	@Autowired
 	PostService postService;
 
-	@RequestMapping(value = "/posts")
+	@RequestMapping(value = "/createposts")
 	public String createBlogg(Model model) {
 		model.addAttribute("newPost", new Post());
-		return "posts";
+		return "createpost";
 	}
 
 	@PostMapping(value = "/book/save")
@@ -48,7 +48,15 @@ public class PostViewController {
 	Fighter fighter = fighterService.findByUsername(username);
 	fighter.addPosts(newPost);
 		fighterRepository.save(fighter);
-	        return "posts";
-
+	        return "createpost";
 }
+	
+	@RequestMapping(value = "/posts")
+	public String viewPost(Model model){
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Post[]> posts = restTemplate.getForEntity("http://localhost:8080/api/posts", Post[].class);
+		model.addAttribute("info", posts.getBody());
+		return "posts";
+	}
+	
 }

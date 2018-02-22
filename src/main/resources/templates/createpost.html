@@ -11,49 +11,26 @@
     <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
 </head>
 
+
 <body>
-
-<th:block th:include="navbar"></th:block>
 <div class="container">
-<h1>View all posts</h1>
+<h1>POSTS</h1>
 
-
-		<!-- <div th:each="info : ${info}">
-				<p th:text="*{info.title}"></p>
-				<p th:text="*{info.body}"></p>
-				<p th:text="*{info.date}"></p>
-			</div> -->
-			
-	<ul class="nav nav-pills row">
-    <li class="nav-item col-sm">
-    <a class="nav-link active" data-toggle="pill" href="#home">Upcoming events</a>
-  </li>
-     <li class="nav-item col-sm">
-    <a class="nav-link" data-toggle="pill" href="#menu1">Past events</a>
-  </li>
-    <li class="nav-item col-sm">
-    <a class="nav-link" data-toggle="pill" href="#menu2">Your events</a>
-  </li>
-  </ul>
-			
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active container" id="home">
-  <div th:each="info : ${info}">
- 	<p th:text="*{info.title}"></p>
- 	<p th:text="*{info.body}"></p>
-	<p th:text="*{info.date}"></p>
-	<p>........................</p>
-	</div>
+<form action="#" th:action="@{/book/save}" th:object="${newPost}" th:method="post">
+  <div class="form-group">
+    <label for="formGroupTitle">title</label>
+    <input th:field="*{title}" type="text" class="form-control" id="formGrouptitle" placeholder="Title"/>
   </div>
-  <div class="tab-pane container" id="menu1">Two </div>
-  <div class="tab-pane container" id="menu2">tre</div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Content</label>
+    <textarea th:field="*{body}" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+  </div>
+  
+<button class="btn btn-primary" type="submit" id="submitButton">Submit</button>
+</form>
 </div>
 
 
-
-</div>
 
 
 
