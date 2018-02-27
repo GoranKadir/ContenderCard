@@ -41,6 +41,7 @@ public class FighterServiceImpl implements FighterService {
 	@Override
 	public void saveFighter(Fighter fighter) {
 		fighter.setPassword(bCryptPasswordEncoder.encode(fighter.getPassword()));
+		fighter.setPasswordConfirm(bCryptPasswordEncoder.encode(fighter.getPasswordConfirm()));
 		fighterRepository.save(fighter);
 		
 	}

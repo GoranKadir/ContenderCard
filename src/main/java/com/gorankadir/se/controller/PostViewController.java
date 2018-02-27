@@ -28,7 +28,7 @@ import com.gorankadir.se.service.PostService;
 public class PostViewController {
 	@Autowired
 	FighterService fighterService;
-	
+
 	@Autowired
 	FighterRepository fighterRepository;
 
@@ -42,21 +42,48 @@ public class PostViewController {
 	}
 
 	@PostMapping(value = "/book/save")
-	public String create(Model model, @Valid @ModelAttribute("newPost") Post newPost){
-	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	String username = auth.getName();
-	Fighter fighter = fighterService.findByUsername(username);
-	fighter.addPosts(newPost);
+	public String create(Post newPost) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		Fighter fighter = fighterService.findByUsername(username);
+		fighter.addPosts(newPost);
 		fighterRepository.save(fighter);
-	        return "createpost";
-}
+		return "redirect:/posts";
+	}
 	
 	@RequestMapping(value = "/posts")
-	public String viewPost(Model model){
+	public String viewPost(Model model) {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Post[]> posts = restTemplate.getForEntity("http://localhost:8080/api/posts", Post[].class);
 		model.addAttribute("info", posts.getBody());
 		return "posts";
 	}
+
+	@RequestMapping(value = "/posts/{id}")
+	public String viewOnePost(@PathVariable Long id, Model model) {
+		model.addAttribute("post", postService.findById(id));
+		return "viewpost";
+	}
 	
+	@RequestMapping(value = "/posts/edit/{id}")
+	public String editOnePost(@PathVariable Long id, Model model) {
+		model.addAttribute("newPost", postService.findById(id));
+		return "createpost";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

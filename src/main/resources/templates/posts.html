@@ -24,32 +24,22 @@
 				<p th:text="*{info.date}"></p>
 			</div> -->
 			
-	<ul class="nav nav-pills row">
-    <li class="nav-item col-sm">
-    <a class="nav-link active" data-toggle="pill" href="#home">Upcoming events</a>
-  </li>
-     <li class="nav-item col-sm">
-    <a class="nav-link" data-toggle="pill" href="#menu1">Past events</a>
-  </li>
-    <li class="nav-item col-sm">
-    <a class="nav-link" data-toggle="pill" href="#menu2">Your events</a>
-  </li>
-  </ul>
+<div class="row">
+  <div class="col-sm-6" th:each="info : ${info}">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" th:text="*{info.title}"></h5>
+        <p class="card-text" th:text="*{info.body}"></p>
+        <span th:text="*{info.date}"></span>
+        <a href="#" class="btn btn-primary" th:href="@{/posts/} + ${info.postid}">View</a>
+        <a href="#" class="btn btn-primary" th:href="@{/posts/edit/} + ${info.postid}">Edit</a>
+      </div>
+    </div>
+  </div>
+
+</div>
 			
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active container" id="home">
-  <div th:each="info : ${info}">
- 	<p th:text="*{info.title}"></p>
- 	<p th:text="*{info.body}"></p>
-	<p th:text="*{info.date}"></p>
-	<p>........................</p>
-	</div>
-  </div>
-  <div class="tab-pane container" id="menu1">Two </div>
-  <div class="tab-pane container" id="menu2">tre</div>
-</div>
 
 
 
