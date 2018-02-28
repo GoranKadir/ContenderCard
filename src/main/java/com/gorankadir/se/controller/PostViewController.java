@@ -23,6 +23,7 @@ import com.gorankadir.se.model.Post;
 import com.gorankadir.se.repository.FighterRepository;
 import com.gorankadir.se.service.FighterService;
 import com.gorankadir.se.service.PostService;
+import com.gorankadir.se.service.PostValidator;
 
 @Controller
 public class PostViewController {
@@ -34,6 +35,9 @@ public class PostViewController {
 
 	@Autowired
 	PostService postService;
+	
+	@Autowired
+    private PostValidator postValidator;
 
 	@RequestMapping(value = "/createposts")
 	public String createBlogg(Model model) {
@@ -42,7 +46,13 @@ public class PostViewController {
 	}
 
 	@PostMapping(value = "/book/save")
-	public String create(Post newPost) {
+	public String create(@Valid @ModelAttribute(name = "newPost") Post newPost, BindingResult bindingResult) {
+		postValidator.validate(newPost, bindingResult);
+		
+		if(bindingResult.hasErrors()){
+			return "createpost";
+		}
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		Fighter fighter = fighterService.findByUsername(username);

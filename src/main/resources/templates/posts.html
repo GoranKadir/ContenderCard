@@ -17,12 +17,13 @@
 <div class="container">
 <h1>View all posts</h1>
 
-
 		<!-- <div th:each="info : ${info}">
 				<p th:text="*{info.title}"></p>
 				<p th:text="*{info.body}"></p>
 				<p th:text="*{info.date}"></p>
 			</div> -->
+			
+			
 			
 <div class="row">
   <div class="col-sm-6" th:each="info : ${info}">
@@ -32,7 +33,18 @@
         <p class="card-text" th:text="*{info.body}"></p>
         <span th:text="*{info.date}"></span>
         <a href="#" class="btn btn-primary" th:href="@{/posts/} + ${info.postid}">View</a>
-        <a href="#" class="btn btn-primary" th:href="@{/posts/edit/} + ${info.postid}">Edit</a>
+        
+        <div sec:authorize="hasRole('ROLE_USER')">
+        	<a th:if="${#authentication.name } == ${info.author.username}"
+        	 href="#" class="btn btn-primary" th:href="@{/posts/edit/} + ${info.postid}">Edit</a>
+        </div>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+        	<a href="#" class="btn btn-primary" th:href="@{/posts/edit/} + ${info.postid}">Edit</a>
+        </div>
+        
+        
+
+        
       </div>
     </div>
   </div>
@@ -40,11 +52,14 @@
 </div>
 			
 
-
-
-
 </div>
 
+<!--  <div th:switch="${info.author.role}"> 
+        <p th:case="'admin'">User is an administrator</p>
+        <a href="#" class="btn btn-primary" th:href="@{/posts/edit/} + ${info.postid}">Edit</a>
+        <p th:case="'user'">User is a manager</p>
+        <a th:if="${#authentication.name } == ${info.author.username}" href="#" class="btn btn-primary" th:href="@{/posts/edit/} + ${info.postid}">Edit</a>
+        </div> -->
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

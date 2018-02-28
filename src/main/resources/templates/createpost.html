@@ -13,18 +13,22 @@
 
 
 <body>	
+<th:block th:include="navbar"></th:block>
 <div class="container">
 <h1>POSTS</h1>
-
 <form action="#" th:action="@{/book/save}" th:object="${newPost}" th:method="post">
 <input type="hidden" th:field="*{postid}"/>
+
   <div class="form-group">
     <label for="formGroupTitle">title</label>
     <input th:field="*{title}" type="text" class="form-control" id="formGrouptitle" placeholder="Title"/>
+    <p th:if="${#fields.hasErrors('title')}" class="label label-danger" th:errors="*{title}"></p>
   </div>
+  
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Content</label>
     <textarea th:field="*{body}" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+    <p th:if="${#fields.hasErrors('body')}" class="label label-danger" th:errors="*{body}"></p>
   </div>
   
 <button class="btn btn-primary" type="submit" id="submitButton">Submit</button>
