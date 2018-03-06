@@ -18,27 +18,27 @@
 
 <form class ="form-horizontal">
 <div class="form-group">
-	<label class="col-sm-2 control-label">Title: </label>
+	<label class="col-sm-2 control-label">Rubrik: </label>
 	<div class="col-md-10">
 	<p class="form-control-static" th:text="${post.title}"></p>
 	</div>
 	</div>
 	<div class="form-group">
-	<label class="col-sm-2 control-label">Title: </label>
-	<div class="col-md-10">
-	<p class="form-control-static" th:text="${post.title}"></p>
-	</div>
-	</div>
-	<div class="form-group">
-	<label class="col-sm-2 control-label">Title: </label>
+	<label class="col-sm-2 control-label">Body: </label>
 	<div class="col-md-10">
 	<p class="form-control-static" th:text="${post.body}"></p>
 	</div>
 	</div>
 	<div class="form-group">
-	<label class="col-sm-2 control-label">Title: </label>
+	<label class="col-sm-2 control-label">skriven av: </label>
 	<div class="col-md-10">
-	<p class="form-control-static" th:text="${post.title}"></p>
+	<p class="form-control-static" th:text="${post.author.username}"></p>
+	</div>
+	</div>
+	<div class="form-group">
+	<label class="col-sm-2 control-label">Datum: </label>
+	<div class="col-md-10">
+	<p class="form-control-static" th:text="${post.date}"></p>
 	</div>
 	</div>
 </form>

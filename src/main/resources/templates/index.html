@@ -20,6 +20,7 @@
 <p>Name: <input type="text" ng-model="name" /></p>
 <p ng-bind="name"></p>
 
+<span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
 </div>
 
 <p sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/admin}"></a>Admin</p>

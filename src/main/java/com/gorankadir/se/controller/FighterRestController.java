@@ -99,6 +99,8 @@ public class FighterRestController {
 	        currentFighter.setTelefon(fighter.getTelefon());
 	        currentFighter.setEmail(fighter.getEmail());
 	        currentFighter.setKlubb(fighter.getKlubb());
+	        currentFighter.setPassword(fighter.getPassword());
+	        currentFighter.setPasswordConfirm(fighter.getPasswordConfirm());
 	        
 	        fighterService.updateFighter(currentFighter);
 	        return new ResponseEntity<Fighter>(currentFighter, HttpStatus.OK);

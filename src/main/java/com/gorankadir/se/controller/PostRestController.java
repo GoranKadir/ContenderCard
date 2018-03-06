@@ -96,7 +96,7 @@ public static final Logger logger = LoggerFactory.getLogger(FighterRestControlle
 	            return new ResponseEntity(new CustomErrorType("Unable to delete. Fighter with id " + id + " not found."),
 	                    HttpStatus.NOT_FOUND);
 	        }
-	        postService.deleteById(id);
+	        postService.deleteById(post);
 	        return new ResponseEntity<Post>(HttpStatus.NO_CONTENT);
 	    }
 	 

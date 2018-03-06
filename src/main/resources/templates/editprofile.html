@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8" />
+<title>Page Title</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
+</head>
+
+<body>
+	
+	<th:block th:include="navbar"></th:block>
+	
+<div class="container">
+    <h1>Edit Profile</h1>
+  	<hr />
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar" />
+          <h6>Upload a different photo...</h6>
+          
+          <input type="file" class="form-control" />
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div>
+        <h3>Personal info</h3>
+               
+        <form action="#" th:action="@{/edit/profile/{id}(id=${info.id})}" th:object="${info}" th:method="post">
+         <input type="hidden" th:field="*{id}" />
+          <div class="form-group">
+            <label  class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input th:field="*{firstname}" class="form-control" type="text" value="Jane" />
+               <p th:if="${#fields.hasErrors('firstname')}" class="label label-danger" th:errors="*{firstname}"></p>
+            </div>
+          </div>
+          
+          <div class="form-group">
+			<label class="control-label" for="signupUserName">Username</label>
+			<input th:field="*{username}" id="signupUserName" type="text" class="form-control" />
+			 <p th:if="${#fields.hasErrors('username')}" class="label label-danger" th:errors="*{username}"></p>
+			</div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input th:field="*{lastname}" class="form-control" type="text" value="Bishop" />
+               <p th:if="${#fields.hasErrors('lastname')}" class="label label-danger" th:errors="*{lastname}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Person nummer:</label>
+            <div class="col-lg-8">
+              <input th:field="*{personnr}" class="form-control" type="text" value="" />
+               <p th:if="${#fields.hasErrors('personnr')}" class="label label-danger" th:errors="*{personnr}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Adress:</label>
+            <div class="col-lg-8">
+              <input th:field="*{adress}" class="form-control" type="text" value="janesemail@gmail.com" />
+               <p th:if="${#fields.hasErrors('adress')}" class="label label-danger" th:errors="*{adress}"></p>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-3 control-label">Ort:</label>
+            <div class="col-md-8">
+              <input th:field="*{ort}" class="form-control" type="text" value="janeuser" />
+               <p th:if="${#fields.hasErrors('ort')}" class="label label-danger" th:errors="*{ort}"></p>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-3 control-label">Telefon:</label>
+            <div class="col-md-8">
+              <input th:field="*{telefon}" class="form-control" type="text" value="janeuser" />
+               <p th:if="${#fields.hasErrors('telefon')}" class="label label-danger" th:errors="*{telefon}"></p>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-3 control-label">Email:</label>
+            <div class="col-md-8">
+              <input th:field="*{email}" class="form-control" type="text" value="janeuser" />
+               <p th:if="${#fields.hasErrors('email')}" class="label label-danger" th:errors="*{email}"></p>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-3 control-label">Klubb:</label>
+            <div class="col-md-8">
+              <input th:field="*{klubb}" class="form-control" type="text" value="janeuser" />
+               <p th:if="${#fields.hasErrors('klubb')}" class="label label-danger" th:errors="*{klubb}"></p>
+            </div>
+          </div>
+          
+         <button class="btn btn-primary" type="submit" id="submitButton">Submit</button>
+        </form>
+      </div>
+  </div>
+</div>
+<hr />
+		
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

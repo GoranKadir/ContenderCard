@@ -55,7 +55,7 @@ public class Fighter implements Serializable {
 
 	@Column(name = "klubb")
 	private String klubb;
-
+	
 	@Column(name = "password")
 	private String password;
 

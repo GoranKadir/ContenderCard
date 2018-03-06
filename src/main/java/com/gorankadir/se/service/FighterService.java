@@ -12,8 +12,10 @@ public interface FighterService {
 	Fighter findByEmail(String email);
  
     void saveFighter(Fighter fighter);
- 
+  
     void updateFighter(Fighter fighter);
+    
+    void testUpdate(Fighter fighter);
  
     void deleteFighterById(Long id);
  
@@ -22,5 +24,6 @@ public interface FighterService {
     List<Fighter> findAllFighters();
  
     boolean isFighterExist(Fighter fighter);
+    
 
 }

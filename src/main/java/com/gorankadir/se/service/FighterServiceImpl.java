@@ -49,8 +49,9 @@ public class FighterServiceImpl implements FighterService {
 	@Override
 	public void updateFighter(Fighter fighter) {
 		saveFighter(fighter);
-		
 	}
+	
+	
 
 	@Override
 	public void deleteFighterById(Long id) {
@@ -74,6 +75,12 @@ public class FighterServiceImpl implements FighterService {
 	public boolean isFighterExist(Fighter fighter) {
 		// TODO Auto-generated method stub
 		return findByUsername(fighter.getUsername()) !=null;
+	}
+
+	@Override
+	public void testUpdate(Fighter fighter) {
+		fighterRepository.save(fighter);
+		
 	}
 
 }

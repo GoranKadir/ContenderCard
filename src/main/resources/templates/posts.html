@@ -42,13 +42,30 @@
         	<a href="#" class="btn btn-primary" th:href="@{/posts/edit/} + ${info.postid}">Edit</a>
         </div>
         
-        
+        <div  sec:authorize="hasRole('ROLE_USER')">
+        <form action="#" th:action="@{/posts/delete/} + ${info.postid}" th:method="delete">
+			<input type="hidden" name="_method" value="delete" />
+			<button th:if="${#authentication.name } == ${info.author.username}" class="btn btn-primary" type="submit" id="submitButton">Delete</button>
+		</form>
+		</div>
+		
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+        	<form action="#" th:action="@{/posts/delete/} + ${info.postid}" th:method="delete">
+			<input type="hidden" name="_method" value="delete" />
+			<button class="btn btn-primary" type="submit" id="submitButton">Delete</button>
+		</form>
+        </div>
 
-        
       </div>
     </div>
   </div>
-
+  <hr/>
+  <ul class="nav nav-pills">
+    <li class="nav-item" th:each="i : ${#numbers.sequence(0,info.totalPages-1)}">
+  	  <a th:href="@{/posts(page=${i})}" th:text="${i}" class="nav-link" th:classappend="${currentPage} ==${i}?'active':''">
+  	  </a>
+    </li>
+  </ul>
 </div>
 			
 

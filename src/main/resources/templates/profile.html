@@ -13,7 +13,60 @@
 
 <body>
 	
-	Profile
+	<th:block th:include="navbar"></th:block>
+	
+<div class="container">
+ <h1>My Profile</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="2">Profil Infomation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Förnamn:</td>
+      <td th:text="${info.firstname}"></td>
+    </tr>
+    <tr>
+      <td>Efternamn</td>
+      <td th:text="${info.lastname}"></td>
+    </tr>
+    <tr>
+      <td>Personnummer:</td>
+      <td th:text="${info.personnr}"></td>
+    </tr>
+    <tr>
+      <td>Adress:</td>
+      <td th:text="${info.adress}"></td>
+    </tr>
+    <tr>
+      <td>Ort:</td>
+      <td th:text="${info.ort}"></td>
+    </tr>
+    <tr>
+      <td>Telefon:</td>
+      <td th:text="${info.telefon}"></td>
+    </tr>
+    <tr>
+      <td>Email::</td>
+      <td th:text="${info.email}"></td>
+    </tr>
+    <tr>
+      <td>Klubb:</td>
+      <td th:text="${info.klubb}"></td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+      <a href="#" class="btn btn-primary" th:href="@{/edit/profile/} + ${info.id}">ändra uppgifter</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
 		
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
