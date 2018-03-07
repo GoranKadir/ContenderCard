@@ -1,11 +1,11 @@
 
 body {
-	background-color:#262626;
+	background-color: #330100;
 	}
 	
 	/* change the background color */
 .navbar-custom {
-    background-color: #800040;
+    background-color: #0C0E19;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -23,24 +23,29 @@ body {
 }
 
 h1 {
-	color: red;
+	color: #808187;
 }
 
 h3 {
-	color: white;
+	color: #808187;
 }
 
 td {
-	color: white;
+	color: #808187;
 }
 
 label {
-	color: white;
+	color: #808187;
 }
-
-
-
 
 th {
-	color: white;
+	color: #808187;
 }
+
+.tavlingskort {
+	font-weight: bold;
+	color: #995A3D;
+}
+
+
+

@@ -54,6 +54,7 @@ public class ViewController {
 		List<Roles> roles = new ArrayList<>();
 		roles.add(new Roles("ROLE_USER"));
 		userForm.setRole(roles);
+		userForm.setNumberOfDays(0);
 		restTemplate.postForEntity("http://localhost:8080/api/fighter", userForm, Fighter.class);
 		securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 		return "index";
@@ -97,7 +98,6 @@ public class ViewController {
 
 	@PostMapping(path="/edit/profile/{id}")
 	 public String editItem(@PathVariable Long id, Fighter fighter){
-		
 		
 		Fighter fight = fighterService.findById(id);
 		    fight.setUsername(fighter.getUsername());

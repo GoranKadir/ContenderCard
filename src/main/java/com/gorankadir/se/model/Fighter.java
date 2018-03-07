@@ -61,7 +61,22 @@ public class Fighter implements Serializable {
 
 	@Column(name = "passwordConfirm")
 	private String passwordConfirm;
-
+	
+	@Column(name = "numberOfDays")
+	private int numberOfDays;
+	
+	public boolean isLimitedAccess(){
+		if(numberOfDays == 0){
+			return false;
+			//Full access
+		}
+		else {
+			return true;
+			//Not full access
+		}
+	}
+	
+	
 	public Fighter() {}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -79,7 +94,7 @@ public class Fighter implements Serializable {
 	}
 	
 	public Fighter(long id, String username, String firstname, String lastname, String personnr, String adress,
-			String ort, String telefon, String email, String klubb, String password, String passwordConfirm) {
+			String ort, String telefon, String email, String klubb, String password, String passwordConfirm, int numberOfDays) {
 		this.id = id;
 		this.username = username;
 		this.firstname = firstname;
@@ -92,6 +107,7 @@ public class Fighter implements Serializable {
 		this.klubb = klubb;
 		this.password = password;
 		this.passwordConfirm = passwordConfirm;
+		this.numberOfDays = numberOfDays;
 	}
 
 	public long getId() {
@@ -207,6 +223,14 @@ public class Fighter implements Serializable {
 
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
+	}
+	
+	public int getNumberOfDays() {
+		return numberOfDays;
+	}
+
+	public void setNumberOfDays(int numberOfDays) {
+		this.numberOfDays = numberOfDays;
 	}
 
 }
