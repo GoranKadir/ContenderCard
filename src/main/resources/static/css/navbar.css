@@ -1,50 +1,55 @@
 
 body {
-	background-color: #330100;
+	background-color: #1D242C;
 	}
 	
 	/* change the background color */
 .navbar-custom {
-    background-color: #0C0E19;
+    background-color: #1D242C;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-    color: rgba(255,255,255,.8);
+    color: white;
 }
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-    color: rgba(255,255,255,.5);
+	font-size: 20px;
+    color: white;
 }
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-    color: #ffffff;
+    color: #49B6B8;
 }
 
 h1 {
-	color: #808187;
+	color: #49B6B8;
 }
 
 h3 {
-	color: #808187;
+	color: #ECE7EB;
 }
 
 td {
-	color: #808187;
+	color: #ECE7EB;
 }
 
 label {
-	color: #808187;
+	color: #ECE7EB;
 }
 
 th {
-	color: #808187;
+	color: #ECE7EB;
+}
+
+loggan {
+	font-size: 50px;
 }
 
 .tavlingskort {
 	font-weight: bold;
-	color: #995A3D;
+	color: #ECE7EB;
 }
 
 

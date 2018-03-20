@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,6 +29,7 @@ import com.gorankadir.se.model.Post;
 import com.gorankadir.se.model.Roles;
 import com.gorankadir.se.repository.FighterRepository;
 import com.gorankadir.se.service.FighterService;
+import com.gorankadir.se.service.PostService;
 import com.gorankadir.se.service.SecurityService;
 import com.gorankadir.se.service.UserValidator;
 
@@ -41,7 +44,10 @@ public class ViewController {
 
 	@Autowired
 	private FighterService fighterService;
-
+	
+	@Autowired
+	PostService postService;
+	
 	@PostMapping("/registration")
 	public String registerForm(@ModelAttribute(name = "userForm") Fighter userForm, BindingResult bindingResult) {
 		userValidator.validate(userForm, bindingResult);
@@ -69,16 +75,6 @@ public class ViewController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "login";
-	}
-
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-	@RequestMapping(value = "/admin")
-	public String admin(Model model) {
-		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Fighter[]> fighter = restTemplate.getForEntity("http://localhost:8080/api/fighter",
-				Fighter[].class);
-		model.addAttribute("info", fighter.getBody());
-		return "admin";
 	}
 
 	@RequestMapping(value = "/profile")
@@ -121,4 +117,19 @@ public class ViewController {
 		model.addAttribute("info", user);
 		return "index";
 	}
+	
+
+	@GetMapping("/omoss")
+	public String aboutUs(Model model){
+		return "aboutus";
+	}
+	
+	@GetMapping("/hello")
+	public String hello(Model model){
+		return "hello";
+	}
+	
+	
+	
+	
 }

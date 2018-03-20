@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8" />
+<title>Page Title</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/jumbo.css}"/>
+</head>
+<body>
+<th:block th:include="navbar"></th:block>
+
+<div class="container">
+
+<div class="jumbotron">
+<div class="huvudtext">
+  <h2 class="display-4">Kampsports</h2>
+  <h1 style="color:#49B6B8;" class="display-4">Bibeln</h1>
+  <div class="lead a">Är en plattform där du som fighter att möjlighet att se alla kommande tävlingsevent<br />
+  Du har möjlighet som tävlande att skapa ett event<br />
+ Samt att du har ditt tävlingskort i digitalform <br />
+  </div>
+  </div>
+  <hr class="my-4" />
+  <div class="textButton">
+  <p>Registera dig nu för att ta del av ditt tävlingskort och massa annat skoj</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Logga in</a>
+  </p>
+  </div>
+</div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

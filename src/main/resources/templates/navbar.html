@@ -18,7 +18,7 @@
 <a class="navbar-brand" th:href="@{/}">
 <img th:src="@{/images/martialart.png}" width="60" height="60" alt="Logo" />
 </a>
-    <a class="navbar-brand" th:href="@{/}">Kamp i sport</a>
+    <a class="navbar-brand loggan" th:href="@{/}">Kamsports Bibeln</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,13 +38,16 @@
                 <a class="nav-link" th:href="@{/profile}">Profil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/tavlingskort}" th:if="${!info.isLimitedAccess()}" >Tävlingskort</a>
+                <a class="nav-link" th:href="@{/tavlingskort}">Tävlingskort</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/omoss}">Om oss</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Admin</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+      <!--   <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="#">Register</a>
             </li>
@@ -54,8 +57,22 @@
 		   </form>
             </li>
         </ul>
+         -->
+        <ul class="nav navbar-nav ml-auto">
+				<li th:if="${#httpServletRequest.userPrincipal == null}" class="nav-item"><a class="nav-link" th:href="@{/registration}"> Sign Up</a></li>
+				<li th:if="${#httpServletRequest.userPrincipal == null}" class="nav-item"><a class="nav-link" th:href="@{/login}"> Login</a></li>
+				
+				<li th:if="${#httpServletRequest.userPrincipal != null}" class="nav-item">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" />
+				</form>
+				</li>
+			</ul>
+        
     </div>
 </nav>
+
+<!-- th:if="${!info.isLimitedAccess()}" -->
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -12,18 +12,19 @@ import com.gorankadir.se.service.FighterService;
 
 @Controller
 public class ContestCardController {
-	
+
 	@Autowired
 	FighterService fighterService;
+
 	@GetMapping("/tavlingskort")
-	public String contectCard(Model model){
-		
+	public String contectCard(Model model) {
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		Fighter user = fighterService.findByUsername(username);
-		if (!user.isLimitedAccess()){
-		model.addAttribute("info", user);
-		return "contestcard";
+		if (!user.isLimitedAccess()) {
+			model.addAttribute("info", user);
+			return "contestcard";
 		}
 		return "redirect:/";
 	}

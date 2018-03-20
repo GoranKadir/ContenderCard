@@ -83,4 +83,19 @@ public class FighterServiceImpl implements FighterService {
 		
 	}
 
+	@Override
+	public long countFighers() {
+		return fighterRepository.count();
+	}
+
+	@Override
+	public void deleteOneFighterrById(Fighter fighter) {
+		
+	}
+
+//	@Override
+//	public List<Fighter> search(String q) {
+//		return fighterRepository.findByNameContaining(q) ;
+//	}
+
 }

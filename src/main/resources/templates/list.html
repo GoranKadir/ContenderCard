@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8" />
+<title>Page Title</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
+    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> 
+</head>
+<body>
+
+<div class="container main-content list">
+		<div th:if="${success}"
+			class="row alert alert-success alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<span th:text="${success}"></span>
+		</div>
+		<div class="row">
+			<a th:href="@{/admin/user/create}" class="btn btn-success pull-left">
+				<span class="glyphicon glyphicon-plus"></span> Add new employee
+			</a>
+			<form class="form-inline pull-right" action="#"
+				th:action="@{/admin/user/search}" method="GET">
+				<div class="form-group">
+					<input type="text" class="form-control" name="s"
+						placeholder="Type employee name..." />
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+		</div>
+		<th:block th:if="${#lists.isEmpty(users)}">
+			<h3>No employee</h3>
+		</th:block>
+
+		<th:block th:unless="${#lists.isEmpty(users)}">
+			<div class="row">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Användarnamn</th>
+							<th>Förnamn</th>
+							<th>Efternamn</th>
+							<th>Personnummer</th>
+							<th>Adress</th>
+							<th>Ort</th>
+							<th>Telefon</th>
+							<th>Email</th>
+							<th>Klubb</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${users}">
+							<td th:text="*{user.id}"></td>
+							<td th:text="*{user.username}"></td>
+							<td th:text="*{user.firstname}"></td>
+							<td th:text="*{user.lastname}"></td>
+							<td th:text="*{user.personnr}"></td>
+							<td th:text="*{user.adress}"></td>
+							<td th:text="*{user.ort}"></td>
+							<td th:text="*{user.telefon}"></td>
+							<td th:text="*{user.email}"></td>
+							<td th:text="*{user.klubb}"></td>
+							<td><a th:href="@{/admin/user/{id}/edit(id=${user.id})}"><span
+									class="glyphicon glyphicon-pencil"></span>Edit</a></td>
+									
+							<td><a th:href="@{/admin/user/{id}/delete(id=${user.id})}"><span
+									class="glyphicon glyphicon-trash"></span>Delete</a></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<hr />
+				<ul class="nav nav-pills">
+					<li class="nav-item"
+						th:each="i : ${#numbers.sequence(0,users.totalPages-1)}"><a
+						th:href="@{/admin/users/(page=${i})}" th:text="${i}"
+						class="nav-link"
+						th:classappend="${currentPage} ==${i}?'active':''"></a></li>
+				</ul>
+			</div>
+		</th:block>
+	</div>
+	<!-- /.container -->
+	
+	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -17,13 +17,19 @@ public interface FighterService {
     
     void testUpdate(Fighter fighter);
  
+    void deleteOneFighterrById(Fighter fighter);
+    
     void deleteFighterById(Long id);
  
     void deleteAllFighters();
  
     List<Fighter> findAllFighters();
+    
+    //List<Fighter> search(String q);
  
     boolean isFighterExist(Fighter fighter);
+    
+    long countFighers();
     
 
 }

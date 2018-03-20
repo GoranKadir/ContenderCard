@@ -42,6 +42,7 @@ public class Post {
 	private Date date = new Date();
 	
 	
+	
 	public Post(){}
 
 	public Post(long postid, String title, String body, Fighter author, Date date) {

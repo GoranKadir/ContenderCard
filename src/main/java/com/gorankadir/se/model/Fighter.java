@@ -93,6 +93,12 @@ public class Fighter implements Serializable {
 		return posts;
 	}
 	
+	public int countPosts(){
+		 
+		 return posts.size();
+		   
+	}
+
 	public Fighter(long id, String username, String firstname, String lastname, String personnr, String adress,
 			String ort, String telefon, String email, String klubb, String password, String passwordConfirm, int numberOfDays) {
 		this.id = id;

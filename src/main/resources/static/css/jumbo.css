@@ -1,0 +1,46 @@
+.jumbotron {
+	background:transparent !important;
+}
+
+.huvudtext h2 {
+	  font-weight: bold;
+	  color: white;
+	  display: inline;
+}
+
+.huvudtext h1 {
+	  font-weight: bold;
+	  display: inline;
+}
+
+.fat {
+	font-weight: bold;
+}
+
+div.a {
+	color: white;
+	line-height: 1.6;
+}
+
+.jumbotron p {
+	color: white;
+}
+
+.jumbotron a {
+	 display:block;
+   width:100px;
+   margin:0 auto;
+}
+
+.textButton a {
+	display:block;
+   width:100px;
+   margin:0 auto;
+}
+.textButton p {
+	text-align: center;
+}
+.huvudtext {
+	text-align: center;
+}
+
