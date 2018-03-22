@@ -89,7 +89,7 @@ public class PostViewController {
 	 */
 	@GetMapping("/posts")
 	public String viewPost(Model model, @RequestParam(defaultValue="0") int page){
-		model.addAttribute("info", postRepository.findAll(new PageRequest(page, 4)));
+		model.addAttribute("info", postRepository.findAll(new PageRequest(page, 6)));
 		model.addAttribute("currentPage", page);
 		return "posts";	
 	}
