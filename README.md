@@ -26,6 +26,8 @@ Role.class
 ## Authors
 
 * **Goran Kadir** - *Java student* - [Goran Kadir](https://github.com/GoranKadir)
+* **Linkedin** - *my linked in profile* - [Linkedin](www.linkedin.com/in/goran-kadir-42605612b)
+* **Rapport** - *my report* - [Report]https://docs.google.com/document/d/1PirMoCDwVCgCXZaMrKTXMTVCDiqoReUGaKmfuNABPnc/edit?usp=sharing)
 
 ## Technology components
 
