@@ -15,65 +15,63 @@
 <th:block th:include="navbar"></th:block>
 <body>
 
-	<!-- <div style="color: red;" th:each="info : ${fighters}">
-				<p th:text="*{info.countPosts()}"></p>
-			</div> -->
-			
-			<div class="container">
+	<div class="container">
 
-	<div class="row mb-3">
-	<div class="col-xl-3 col-sm-6">
-		<div class="card bg-success text-white h-100">
-			<div class="card-body bg-success">
-			<a th:href="@{/admin/users}">
-				<div class="rotate">
-					<i class="fa fa-user fa-3x"></i>
+		<div class="row mb-3">
+			<div class="col-xl-3 col-sm-6">
+				<div class="card bg-success text-white h-100">
+					<div class="card-body bg-success">
+						<a th:href="@{/admin/users}">
+							<div class="rotate">
+								<i class="fa fa-user fa-3x"></i>
+							</div>
+							<h6 class="text-uppercase">Users</h6>
+							<h1 class="display-4">134</h1>
+						</a>
+					</div>
+
 				</div>
-				<h6 class="text-uppercase">Users</h6>
-				<h1 class="display-4">134</h1>
-				</a>
 			</div>
-			
-		</div>
-	</div>
-	<div class="col-xl-3 col-sm-6">
-		<div class="card text-white bg-danger h-100">
-			<div class="card-body bg-danger">
-				<div class="rotate">
-					<i class="fa fa-list fa-3x"></i>
+			<div class="col-xl-3 col-sm-6">
+				<div class="card text-white bg-danger h-100">
+					<div class="card-body bg-danger">
+						<div class="rotate">
+							<i class="fa fa-list fa-3x"></i>
+						</div>
+						<h6 class="text-uppercase">Posts</h6>
+						<h1 class="display-4">87</h1>
+					</div>
 				</div>
-				<h6 class="text-uppercase">Posts</h6>
-				<h1 class="display-4">87</h1>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<div class="card text-white bg-info h-100">
+					<div class="card-body bg-info">
+						<div class="rotate">
+							<i class="fa fa-twitter fa-3x"></i>
+						</div>
+						<h6 class="text-uppercase">Tweets</h6>
+						<h1 class="display-4">125</h1>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<div class="card text-white bg-warning h-100">
+					<div class="card-body bg-warning">
+						<div class="rotate">
+							<i class="fa fa-share fa-3x"></i>
+						</div>
+						<h6 class="text-uppercase">Shares</h6>
+						<h1 class="display-4">36</h1>
+					</div>
+				</div>
 			</div>
 		</div>
+
+		<!-- <p th:text="${#lists.size(u.engines)}">[Engine Size]</p> -->
+
 	</div>
-	<div class="col-xl-3 col-sm-6">
-                    <div class="card text-white bg-info h-100">
-                        <div class="card-body bg-info">
-                            <div class="rotate">
-                                <i class="fa fa-twitter fa-3x"></i>
-                            </div>
-                            <h6 class="text-uppercase">Tweets</h6>
-                            <h1 class="display-4">125</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card text-white bg-warning h-100">
-                        <div class="card-body bg-warning">
-                            <div class="rotate">
-                                <i class="fa fa-share fa-3x"></i>
-                            </div>
-                            <h6 class="text-uppercase">Shares</h6>
-                            <h1 class="display-4">36</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- <p th:text="${#lists.size(u.engines)}">[Engine Size]</p> -->
-        
-</div>
+	
+	<th:block th:include="footer"></th:block>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

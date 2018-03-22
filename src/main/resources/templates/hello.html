@@ -5,40 +5,142 @@
 <head>
 <meta charset="UTF-8" />
 <title>Page Title</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
-    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
-      <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
-      <link rel="stylesheet" type="text/css" th:href="@{/css/jumbo.css}"/>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" />
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/card.css}" />
+<script th:src="@{/js/card.js}"></script>
+
 </head>
+
 <body>
-<th:block th:include="navbar"></th:block>
+	<th:block th:include="navbar"></th:block>
 
-<div class="container">
+	<div class="container">
 
-<div class="jumbotron">
-<div class="huvudtext">
-  <h2 class="display-4">Kampsports</h2>
-  <h1 style="color:#49B6B8;" class="display-4">Bibeln</h1>
-  <div class="lead a">Är en plattform där du som fighter att möjlighet att se alla kommande tävlingsevent<br />
-  Du har möjlighet som tävlande att skapa ett event<br />
- Samt att du har ditt tävlingskort i digitalform <br />
-  </div>
-  </div>
-  <hr class="my-4" />
-  <div class="textButton">
-  <p>Registera dig nu för att ta del av ditt tävlingskort och massa annat skoj</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Logga in</a>
-  </p>
-  </div>
-</div>
+		<!-- Heading Row -->
+		<div class="row my-4">
+			<div class="col-lg-8">
+				<img class="img-fluid rounded"
+					src="http://quotesnpics.com/wp-content/uploads/I-hated-every-minute-680x425.jpg"
+					alt="" />
+			</div>
+			<!-- /.col-lg-8 -->
+			<div class="col-lg-4">
+				<h1 style="color: #49B6B8; font-weight: bold;">Kampsports
+					Bibeln</h1>
+				<p style="color: white;">Är en plattform där du som fighter att
+					möjlighet att se alla kommande tävlingsevent. Du har möjlighet som
+					tävlande att skapa ett event. Samt att du har ditt tävlingskort i
+					digitalform.
+				<hr />
+				<p style="color: white;"
+					th:if="${#httpServletRequest.userPrincipal == null}">Registera
+					dig nu för att ta del av ditt tävlingskort och massa annat skoj</p>
+				</p>
+				<a th:if="${#httpServletRequest.userPrincipal == null}"
+					class="btn btn-primary btn-lg" th:href="@{/registration}">Registera
+					dig</a>
+			</div>
+			<!-- /.col-md-4 -->
+		</div>
+		<!-- /.row -->
 
-</div>
+		<!-- Call to Action Well -->
+		<div class="card text-white bg-secondary my-4 text-center">
+			<div class="card-body">
+				<p style="font-weight: bold;" class="text-white m-0">här kan du
+					se dom senaste kampsports evenemang</p>
+			</div>
+		</div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<section class="carousel slide" data-ride="carousel"
+			id="postsCarousel">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 text-right mb-4">
+						<a class="btn btn-outline-secondary prev" href="" title="go back"><i
+							class="fa fa-lg fa-chevron-left"></i></a><a
+							class="btn btn-outline-secondary next" href="" title="more"><i
+							class="fa fa-lg fa-chevron-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="container p-t-0 m-t-2 carousel-inner">
+				<div class="row row-equal carousel-item active m-t-0">
+					<div class="col-md-4 mb-4" th:each="info : ${posts}">
+						<div class="card h-100">
+							<div style="background-color: #C0C0C0;" class="card-header">
+								<h4 class="card-title" th:text="*{info.title}"></h4>
+							</div>
+							<img class="card-img-top"
+								src="http://cdn.lowkickmma.com/wp-content/uploads/2014/09/lowkick_background4-16.jpg"
+								alt="Card image cap" />
+							<div class="card-body">
+								<p class="card-text" th:text="*{info.body}"></p>
+							</div>
+							<a href="#" class="btn btn-primary"
+								th:href="@{/posts/} + ${info.postid}">View</a>
+						</div>
+					</div>
+				</div>
+				<div class="row row-equal carousel-item m-t-0">
+					<div class="col-md-4 mb-4" th:each="info : ${posts}">
+						<div class="card h-100">
+							<div style="background-color: #C0C0C0;" class="card-header">
+								<h4 class="card-title" th:text="*{info.title}"></h4>
+							</div>
+							<img class="card-img-top"
+								src="http://cdn.lowkickmma.com/wp-content/uploads/2014/09/lowkick_background4-16.jpg"
+								alt="Card image cap" />
+							<div class="card-body">
+								<p class="card-text" th:text="*{info.body}"></p>
+							</div>
+							<a href="#" class="btn btn-primary"
+								th:href="@{/posts/} + ${info.postid}">View</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+	</div>
+	<!-- main Container -->
+
+	<th:block th:include="footer"></th:block>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script>
+		(function($) {
+			"use strict";
+			$('.next').click(function() {
+				$('.carousel').carousel('next');
+				return false;
+			});
+			$('.prev').click(function() {
+				$('.carousel').carousel('prev');
+				return false;
+			});
+		})(jQuery);
+	</script>
 </body>
 </html>

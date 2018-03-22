@@ -20,7 +20,7 @@
 <div class="container">
 
     <form method="POST" th:object="${userForm}" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
+        <h2 style="color: #49B6B8;" class="form-signin-heading">Create your account</h2>
         
        
         <div class="form-group">
@@ -31,7 +31,7 @@
 	
 		
         <div class="form-group">
-			<label class="control-label" for="signupLastName">Lastname</label>
+			<label class="control-label" for="signupLastName">Firstname</label>
 			<input th:field="*{firstname}" id="signupFirstName" type="text" class="form-control" />
 			<p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></p>
 			</div>
@@ -95,6 +95,8 @@
 
 </div>
 <!-- /container -->
+
+<th:block th:include="footer"></th:block>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>

@@ -6,9 +6,6 @@
 <meta charset="UTF-8" />
 <title>Page Title</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
-    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
 </head>
 <body>
 <th:block th:include="navbar"></th:block>
@@ -18,27 +15,27 @@
 
 <form class ="form-horizontal">
 <div class="form-group">
-	<label class="col-sm-2 control-label">Rubrik: </label>
+	<h4 style="color: #49B6B8;" class="col-sm-2 control-label">Rubrik: </h4>
 	<div class="col-md-10">
-	<p class="form-control-static" th:text="${post.title}"></p>
+	<p style="color:white;" class="form-control-static" th:text="${post.title}"></p>
 	</div>
 	</div>
 	<div class="form-group">
-	<label class="col-sm-2 control-label">Body: </label>
+	<h4 class="col-sm-2 control-label">Inledning: </h4>
 	<div class="col-md-10">
-	<p class="form-control-static" th:text="${post.body}"></p>
+	<p style="color:white;" class="form-control-static" th:text="${post.body}"></p>
 	</div>
 	</div>
 	<div class="form-group">
-	<label class="col-sm-2 control-label">skriven av: </label>
+	<h4 class="col-sm-2 control-label">skriven av: </h4>
 	<div class="col-md-10">
-	<p class="form-control-static" th:text="${post.author.username}"></p>
+	<p style="color:white;" class="form-control-static" th:text="${post.author.username}"></p>
 	</div>
 	</div>
 	<div class="form-group">
-	<label class="col-sm-2 control-label">Datum: </label>
+	<h4 class="col-sm-2 control-label">Datum: </h4>
 	<div class="col-md-10">
-	<p class="form-control-static" th:text="${post.date}"></p>
+	<p style="color:white;" class="form-control-static" th:text="${post.date}"></p>
 	</div>
 	</div>
 </form>
@@ -46,7 +43,7 @@
 </div>
 
 
-
+<th:block th:include="footer"></th:block>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

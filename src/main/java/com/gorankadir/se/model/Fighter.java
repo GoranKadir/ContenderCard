@@ -93,11 +93,20 @@ public class Fighter implements Serializable {
 		return posts;
 	}
 	
-	public int countPosts(){
-		 
-		 return posts.size();
-		   
-	}
+	
+//	public int countPosts(){
+//		return posts.size();
+//	}
+//
+//	@Transient
+//	private int sum;
+//	public int sumPosts(){
+//		for(Post p : posts){
+//			sum += p.getAuthor().posts.size();
+//		}
+//		return sum;
+//	}
+		
 
 	public Fighter(long id, String username, String firstname, String lastname, String personnr, String adress,
 			String ort, String telefon, String email, String klubb, String password, String passwordConfirm, int numberOfDays) {
@@ -238,5 +247,14 @@ public class Fighter implements Serializable {
 	public void setNumberOfDays(int numberOfDays) {
 		this.numberOfDays = numberOfDays;
 	}
+	
+//	public int getSum() {
+//		return sum;
+//	}
+//
+//
+//	public void setSum(int sum) {
+//		this.sum = sum;
+//	}
 
 }

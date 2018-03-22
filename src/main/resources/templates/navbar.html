@@ -6,10 +6,10 @@
 <meta charset="UTF-8" />
 <title>Page Title</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
-    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
       <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/jumbo.css}"/>
+        
 </head>
 <body>
 
@@ -40,12 +40,26 @@
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/tavlingskort}">Tävlingskort</a>
             </li>
+            
+            <li>
+            	<div class="w3-dropdown-hover">
+    <button class="w3-button w3-black">Coming soon (Kampsports)</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">Mix martial arts</a>
+      <a href="#" class="w3-bar-item w3-button">Muay thai</a>
+      <a href="#" class="w3-bar-item w3-button">Boxning</a>
+    </div>
+  </div>
+            </li>
+            
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/omoss}">Om oss</a>
+                <a class="nav-link" th:href="@{/aboutus}">Om oss</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">Admin</a>
             </li>
+            <li class="nav-item" th:if="${#httpServletRequest.userPrincipal != null}">
+						<a class="nav-link" th:inline="text"> Hej [[${#httpServletRequest.remoteUser}]]!</a></li>
         </ul>
       <!--   <ul class="navbar-nav ml-auto">
             <li class="nav-item">

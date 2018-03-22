@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -40,9 +41,13 @@ public class Post {
 	private Fighter author;
 	
 	private Date date = new Date();
-	
-	
-	
+
+//	@Transient
+//	int postSizeNumber = 0;
+//	public int postSize(){
+//		return postSizeNumber = author.getPosts().size();
+//	}
+
 	public Post(){}
 
 	public Post(long postid, String title, String body, Fighter author, Date date) {
@@ -92,5 +97,5 @@ public class Post {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
 }

@@ -16,6 +16,10 @@ public class ContestCardController {
 	@Autowired
 	FighterService fighterService;
 
+	/*
+	 * find en logged in user and ceck if it can use the contest card or not.
+	 * Based on how long you are banned
+	 */
 	@GetMapping("/tavlingskort")
 	public String contectCard(Model model) {
 

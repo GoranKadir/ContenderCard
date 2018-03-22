@@ -40,34 +40,53 @@ public class AdminViewController {
 	@Autowired
 	private UserValidator userValidator;
 	
+	/*
+	 * This method finds all fighters to the admin page
+	 */
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/admin")
 	public String admin(Model model) {
-		model.addAttribute("fighters");
+		model.addAttribute("fighters", fighterService.findAllFighters());
 		return "admin";
 	}
 	
+	/*
+	 * Finds all fighters and makes a pageing 
+	 */
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/admin/users")
-	public String userTable(Model model, @RequestParam(defaultValue = "0") int page){
+	public String userTable(Model model, @RequestParam(defaultValue = "1") int page){
 		model.addAttribute("users",fighterRepository.findAll(new PageRequest(page, 4)));
 		model.addAttribute("currentPage", page);
 		return "adminusers";
 	}
 	
+	/*
+	 * Create a user
+	 */
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/admin/user/create")
 	public String create(Model model){
 		model.addAttribute("user", new Fighter());
 		return "form";
 	}
 	
+	/*
+	 * Edit a user
+	 */
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping(value = "/admin/user/{id}/edit")
 	public String edit(@PathVariable long id, Model model) {
 		model.addAttribute("user", fighterService.findById(id));
 		return "form";
 	}
 	
+	/*
+	 * edit a user
+	 */
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@PostMapping(path="/admin/user/{id}/edit")
-public String editItem(@PathVariable Long id, Fighter fighter){
+	public String editItem(@PathVariable Long id, Fighter fighter){
 		
 		Fighter fight = fighterService.findById(id);
 		    fight.setUsername(fighter.getUsername());
@@ -83,7 +102,10 @@ public String editItem(@PathVariable Long id, Fighter fighter){
 		  return "redirect:/admin/users";
 	  }
 	
-	
+	/*
+	 * Delete a user
+	 */
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping(value = "/admin/user/{id}/delete")
 	public String delete(@PathVariable long id, RedirectAttributes redirect ) {
 		fighterService.deleteFighterById(id);
@@ -91,6 +113,10 @@ public String editItem(@PathVariable Long id, Fighter fighter){
 		return "redirect:/admin/users";	
 	}
 	
+	/*
+	 * Save a user
+	 */
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@PostMapping("/admin/user/save")
 	public String save(@Valid Fighter fighter, BindingResult result, RedirectAttributes redirect){
 		if(result.hasErrors()){

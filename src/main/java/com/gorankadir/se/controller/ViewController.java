@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -23,11 +24,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import com.gorankadir.se.model.Fighter;
 import com.gorankadir.se.model.Post;
 import com.gorankadir.se.model.Roles;
 import com.gorankadir.se.repository.FighterRepository;
+import com.gorankadir.se.repository.PostRepository;
 import com.gorankadir.se.service.FighterService;
 import com.gorankadir.se.service.PostService;
 import com.gorankadir.se.service.SecurityService;
@@ -48,6 +51,15 @@ public class ViewController {
 	@Autowired
 	PostService postService;
 	
+	@Autowired
+	private PostRepository postRepository;
+	
+	/*
+	 * Registration to the webpage
+	 * Sets a deafult role
+	 * And set numberOfDay to 0 witch means that you have access to your contestCard
+	 * And autologin when the creating is sucess
+	 */
 	@PostMapping("/registration")
 	public String registerForm(@ModelAttribute(name = "userForm") Fighter userForm, BindingResult bindingResult) {
 		userValidator.validate(userForm, bindingResult);
@@ -63,20 +75,22 @@ public class ViewController {
 		userForm.setNumberOfDays(0);
 		restTemplate.postForEntity("http://localhost:8080/api/fighter", userForm, Fighter.class);
 		securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-		return "index";
+		return "hello";
 	}
 
+	/*
+	 * Creating new user
+	 */
 	@GetMapping("/registration")
 	public String getCustomerList(Model model) {
 		model.addAttribute("userForm", new Fighter());
 		return "registration";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-		return "login";
-	}
 
+	/*
+	 * Profile infomation with the logged in user
+	 */
 	@RequestMapping(value = "/profile")
 	public String profile(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -86,12 +100,18 @@ public class ViewController {
 		return "profile";
 	}
 
+	/*
+	 * Show profile infomation with the logged in user
+	 */
 	@GetMapping("/edit/profile/{id}")
 	public String updateProfile(@PathVariable Long id, Model model) {
 		model.addAttribute("info", fighterService.findById(id));
 		return "editprofile";
 	}
 
+	/*
+	 * Edit profile
+	 */
 	@PostMapping(path="/edit/profile/{id}")
 	 public String editItem(@PathVariable Long id, Fighter fighter){
 		
@@ -109,27 +129,33 @@ public class ViewController {
 		  return "redirect:/profile";
 	  }
 
-	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-	public String welcome(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-		Fighter user = fighterService.findByUsername(username);
-		model.addAttribute("info", user);
-		return "index";
-	}
+//	@RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+//	public String welcome(Model model) {
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		String username = auth.getName();
+//		Fighter user = fighterService.findByUsername(username);
+//		model.addAttribute("info", user);
+//		return "hello";
+//	}
 	
 
-	@GetMapping("/omoss")
+	/*
+	 * About the owner of the webpage
+	 */
+	@GetMapping("/aboutus")
 	public String aboutUs(Model model){
 		return "aboutus";
 	}
-	
-	@GetMapping("/hello")
-	public String hello(Model model){
+		
+	/*
+	 * front page of the webpage.
+	 * And Checking 3 events
+	 */
+	@RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+	public String hello(Model model,@RequestParam(defaultValue="0") int page){
+		model.addAttribute("posts", postRepository.findAll(new PageRequest(page, 3)));
+		model.addAttribute("currentPage", page);
 		return "hello";
 	}
-	
-	
-	
 	
 }

@@ -46,11 +46,18 @@ public class PostViewController {
 	@Autowired
     private PostValidator postValidator;
 
+	/*
+	 * Createing a post
+	 */
 	@RequestMapping(value = "/createposts")
 	public String createBlogg(Model model) {
 		model.addAttribute("newPost", new Post());
 		return "createpost";
 	}
+	
+	/*
+	 * save a post and checking the validation
+	 */
 
 	@PostMapping(value = "/book/save")
 	public String create(@Valid @ModelAttribute(name = "newPost") Post newPost, BindingResult bindingResult) {
@@ -77,6 +84,9 @@ public class PostViewController {
 //	}
 	
 	
+	/*
+	 * view all posts
+	 */
 	@GetMapping("/posts")
 	public String viewPost(Model model, @RequestParam(defaultValue="0") int page){
 		model.addAttribute("info", postRepository.findAll(new PageRequest(page, 4)));
@@ -84,18 +94,28 @@ public class PostViewController {
 		return "posts";	
 	}
 
+	
+	/*
+	 * view one single post
+	 */
 	@RequestMapping(value = "/posts/{id}")
 	public String viewOnePost(@PathVariable Long id, Model model) {
 		model.addAttribute("post", postService.findById(id));
 		return "viewpost";
 	}
 	
+	/*
+	 * edit one single post
+	 */
 	@RequestMapping(value = "/posts/edit/{id}")
 	public String editOnePost(@PathVariable Long id, Model model) {
 		model.addAttribute("newPost", postService.findById(id));
 		return "createpost";
 	}
 	
+	/*
+	 * Delete a post
+	 */
 	@RequestMapping(value = "posts/delete/{id}")
 		public String deleteOnePost(@PathVariable(value = "id") Long id, Model model) {
 			Post post = postService.findById(id);

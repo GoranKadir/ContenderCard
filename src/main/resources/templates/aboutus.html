@@ -6,16 +6,40 @@
 <meta charset="UTF-8" />
 <title>Page Title</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
-    <script type="text/javascript" src="/static/app/bookings.controller.js" th:src="@{/app/fighters.controller.js}"></script>
       <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
 </head>
 <body>
 
+<th:block th:include="navbar"></th:block>
 
-<h1>About us</h1>
+ <div class="container">
 
+      <!-- Introduction Row -->
+      <h1 class="my-4">Om Oss
+        <small style="color: white;">Det är trevligt och träffas</small>
+      </h1>
+      <p style="color: white">Kampsports bibeln är en sidan som är skapad av Goran Kadir. Som är en Java student på Jensen education i Göteborg. Han fick idén att skapa en kamsports sidan för alla som tränar kampsport. Kampsports bibeln är som det låter en hemsidan där du kan få infomation om just den kampsporten du är intresserad av. Du kan se skapa och se på dom senaste evenemang runt om i Sverige.</p>
+
+      <!-- Team Members Row -->
+      <div class="row">
+        <div class="col-md-12">
+          <h2 style="color: #49B6B8;" class="my-4">Vårt team</h2>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+          <img class="rounded-circle img-fluid d-block mx-auto" th:src="@{/images/goranbild.png}" width="250" height="250" alt="..." />
+          <h3 style="color: #49B6B8;">Goran Kadir
+            <small style="color: white;"> Java utvecklare</small>
+          </h3>
+          <p style="color: white;">Mitt namn är Goran Kadir och jag är studerande där jag läser systemutveckling.Java Och är skaparen för Kampsports bibeln</p>
+        </div>
+        
+    </div>
+    </div>
+
+
+
+<th:block th:include="footer"></th:block>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
